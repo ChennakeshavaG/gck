@@ -1,0 +1,37 @@
+---
+// The one HTML shell every page uses.
+// Deliberately has no CSS yet: design comes in step 2.
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Lets the browser pick its own light or dark default colours. No CSS involved. -->
+    <meta name="color-scheme" content="light dark" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" type="application/rss+xml" title="gck.sh" href="/rss.xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">gck.sh</a>
+        <a href="/rss.xml">RSS</a>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>

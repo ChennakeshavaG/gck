@@ -1,0 +1,10 @@
+{
+	// Deploys as its own Worker ("gck"), separate from the live site ("me").
+	// It gets a preview URL at gck.<account>.workers.dev until a domain is attached.
+	"name": "gck",
+	"compatibility_date": "2026-05-10",
+	// Static assets only: no "main" entry, so no Worker code runs per request.
+	"assets": {
+		"directory": "./dist"
+	}
+}
